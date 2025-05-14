@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto de atividade || Hangman/Forca</title>
+    <link
+      rel="shortcut icon"
+      href="/assets/faviconhangman.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/assets/css/style_hang.css" />
+    <script src="/assets/js/script_hang.js" defer></script>
+    <script src="/assets/js/word- list.js" defer></script>
+  </head>
+  <body>
+    <div class="game-modal">
+      <div class="content">
+        <img src="#" alt="gif" />
+        <h4>Perdeu o Jogo!</h4>
+        <p>A palavra correta será <b>Arco-Íris</b></p>
+        <button class="play-again">Joguemos de novo!?</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="hangman-box">
+        <img src="#" draggable="false" alt="hangman-img" />
+        <h1>Hangman Game, Vocação</h1>
+      </div>
+
+      <div class="game-box">
+        <ul class="word-display"></ul>
+        <h4 class="hint-text">Tentativas: <b></b></h4>
+        <h4 class="guesses-text">Tentativas incorretas: <b></b></h4>
+        <div class="keyboard"></div>
+      </div>
+    </div>
+  </body>
+</html>
