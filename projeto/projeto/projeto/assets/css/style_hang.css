@@ -1,0 +1,234 @@
+/* Importing Google font - Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+:root{/* Define variáveis CSS globais para cores que serão reutilizadas no código. */
+    --bk-color:#ed8b0c;
+    --bk-color-cr:#E5E1E2;
+    --txt-color-ge:#DA3466;
+    --txt-color-ge-ky-btn:#DCDDD8;
+    --bk-color-ge-ky-btn:#6d6b00;
+    --txt-color-ge-ky-btn-hr:#f4ec4c;
+    --txt-color:#000;
+    --txt-color-we:#fff;
+}
+
+* {/* Reseta margens, preenchimentos e define o modelo de caixa e a fonte para todos os elementos. */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {/* Centraliza o conteúdo na tela, define a altura mínima e uma cor de fundo. */
+
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--bk-color)
+}
+
+.container { /* Define o layout, tamanho, espaçamento, fundo, bordas e sombra do container principal do jogo. */
+    display: flex;
+    width: 850px;
+    gap: 70px;
+    padding: 60px 40px;
+    background: var(--bk-color-cr);
+    border-radius: 10px;
+    align-items: flex-end;
+    justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hangman-box img { /* Define o tamanho máximo e impede a seleção da imagem da forca. */
+    user-select: none;
+    max-width: 270px;
+}
+
+.hangman-box h1 { /* Estiliza o título dentro da caixa da forca, centralizando e transformando em maiúsculas. */
+    font-size: 1.45rem;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.game-box .word-display { /* Define o layout flexível para a exibição da palavra, centralizando as letras. */
+    gap: 10px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-display .letter {/* Estiliza cada letra da palavra, definindo tamanho, peso e uma borda inferior. */
+    width: 28px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-bottom: 3px solid #000;
+}
+
+.word-display .letter.guessed { /* Modifica a aparência das letras adivinhadas, removendo a borda. */
+    margin: -40px 0 35px;
+    border-color: transparent;
+}
+
+.game-box h4 { /* Estiliza os títulos de nível 4 dentro da caixa do jogo, centralizando e definindo a fonte. */
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.game-box h4 b { /* Define o peso da fonte para negrito em elementos 'b' dentro de h4. */
+    font-weight: 600;
+}
+
+.game-box .guesses-text b { /* Aplica uma cor específica para o texto de tentativas restantes. */
+    color: var(--txt-color-ge);
+}
+
+.game-box .keyboard { /* Define o layout flexível e espaçamento para o teclado do jogo. */
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+:where(.game-modal, .keyboard) button { /* Estiliza os botões do modal e do teclado com cores, bordas e fonte padronizadas. */
+    color: var(--txt-color-ge-ky-btn);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: var(--bk-color-ge-ky-btn);
+}
+
+.keyboard button {/* Define o preenchimento e a largura dos botões do teclado. */
+    padding: 7px;
+    width: calc(100% / 9 - 5px);
+}
+
+.keyboard button[disabled] {/* Estiliza botões desabilitados do teclado, tornando-os menos visíveis e não interativos. */
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+:where(.game-modal, .keyboard) button:hover {/* Altera a cor de fundo e do texto dos botões ao passar o mouse. */
+    background: var(--txt-color-ge-ky-btn-hr);
+    color: var(--txt-color)
+}
+
+.game-modal { /* Define a aparência inicial e o posicionamento do modal do jogo, que é invisível. */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 0 10px;
+    transition: opacity 0.4s ease;
+}
+
+.game-modal.show { /* Torna o modal visível e interativo com uma transição suave. */
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.4s 0.4s ease;
+}
+
+.game-modal .content { /* Estiliza o conteúdo interno do modal, com preenchimento, fundo, bordas e sombra. */
+    padding: 30px;
+    max-width: 420px;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--bk-color-cr);
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-modal img {/* Define o tamanho máximo e a margem inferior das imagens dentro do modal. */
+    max-width: 130px;
+    margin-bottom: 20px;
+}
+
+.game-modal img[src="../victory.gif"] { /* Ajusta a margem da imagem de vitória no modal. */
+    margin-left: -10px;
+}
+
+.game-modal h4 {/* Estiliza os títulos de nível 4 dentro do modal. */
+    font-size: 1.53rem;
+}
+
+.game-modal p { /* Estiliza os parágrafos dentro do modal, definindo tamanho e margens. */
+    font-size: 1.15rem;
+    margin: 15px 0 30px;
+    font-weight: 500;
+}
+
+.game-modal p b { /* Define a cor e o peso da fonte para texto em negrito dentro de parágrafos no modal. */
+    color: var(--bk-color-ge-ky-btn);
+    font-weight: 600;
+}
+
+.game-modal button { /* Define o preenchimento dos botões dentro do modal. */
+    padding: 12px 23px;
+}
+
+@media (max-width: 782px) {/* Define estilos responsivos para telas com largura máxima de 782px. */
+    .container {/* Altera o layout do container para coluna em telas menores e ajusta o preenchimento. */
+        flex-direction: column;
+        padding: 30px 15px;
+        align-items: center;
+    }
+
+    .hangman-box img {/* Reduz o tamanho da imagem da forca em telas menores. */
+        max-width: 200px;
+    }
+
+    .hangman-box h1 {/* Oculta o título da caixa da forca em telas menores. */
+        display: none;
+    }
+
+    .game-box h4 {/* Reduz o tamanho da fonte dos títulos h4 do jogo em telas menores. */
+        font-size: 1rem;
+    }
+
+    .word-display .letter { /* Ajusta as margens e o tamanho da fonte das letras em telas menores. */
+        margin-bottom: 35px;
+        font-size: 1.7rem;
+    }
+
+    .word-display .letter.guessed { /* Ajusta as margens de letras adivinhadas em telas menores. */
+        margin: -35px 0 25px;
+    }
+
+    .game-modal img { /* Reduz o tamanho das imagens no modal em telas menores. */
+        max-width: 120px;
+    }
+
+    .game-modal h4 {/* Reduz o tamanho da fonte dos títulos h4 no modal em telas menores. */
+        font-size: 1.45rem;
+    }
+
+    .game-modal p {/* Reduz o tamanho da fonte dos parágrafos no modal em telas menores. */
+        font-size: 1.1rem;
+    }
+
+    .game-modal button {/* Ajusta o preenchimento dos botões no modal em telas menores. */
+        padding: 10px 18px;
+    }
+}
