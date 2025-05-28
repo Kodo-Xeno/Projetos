@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Jogo da Forca JavaScript | Vocação </title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./assets/css/style_hang.css" />
+    <script src="./assets/js/word-list.js" defer></script>
+    <script src="./assets/js/script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Esta Div em específico armazenará todos os conteúdos que serão utilizados para o jogo, um espaço reservado 
+     para as outras divs que entram em detalhe para os outros itens utilizados e específicos -->
+    <div class="game-modal">
+      <!-- Essa div abre o menu de vitória ou derrota quando o jogo se encerra, reservando um espaço para o menu -->
+      <div class="content">
+        <img src="#" alt="gif" />
+        <h4>Perdeu o Jogo!</h4>
+        <p>A palavra correta será: <b>Arco-Íris</b></p>
+        <button class="play-again">Vamos Jogar !?</button>
+      </div>
+    </div>
+<!-- Espaço reservado para o jogo em si, contendo o local que ficaria a imagem da forca e do stickman, não interativos  -->
+    <div class="container">
+      <div class="hangman-box">
+        <img src="#" draggable="false" alt="hangman-img" />
+        <h1>Hangman Game Vocação</h1>
+      </div>
+<!-- Aqui reserva-se o espaço necessário para o teclado, dicas e erros e demonstrar as letras encontradas -->
+      <div class="game-box">
+        <ul class="word-display"></ul>
+        <h4 class="hint-text">Dicas: <b></b></h4>
+        <h4 class="guesses-text">Tentativas Incorretas: <b></b></h4>
+        <div class="keyboard"></div>
+      </div>
+    </div>
+  </body>
+</html>
+ 
